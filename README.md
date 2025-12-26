@@ -61,37 +61,42 @@ All tables were validated for:
 ## Dashboard Visuals & Insights
 
 ### Global Total External Debt (USD, Trillions)
-![Global Total Debt](visuals/global_total_debt.png)
+![Global Total Debt](International_Debt_Statistics/visuals/global_total_debt.png)
 
 Global external debt has increased steadily over the last five decades, with sharper acceleration following major economic shocks and periods of global expansion.
 
 ---
 
 ### Top 10 Countries by External Debt
-![Top 10 Countries by Debt](visuals/top_10_countries_debt.png)
+![Top 10 Countries by Debt](International_Debt_Statistics/visuals/top_10_countries_debt.png)
 
 A small group of countries consistently dominates global external debt, highlighting concentration risk in international financial exposure.
 
 ---
 
 ### Share of Global Debt by Country
-![Debt Share by Country](visuals/debt_share_by_country.png)
+![Debt Share by Country](International_Debt_Statistics/visuals/debt_share_by_country.png)
 
 Global debt is unevenly distributed, with top contributors accounting for a disproportionately large share of total debt outstanding.
 
 ---
 
 ### Year-over-Year Debt Growth (%)
-![YoY Debt Growth](visuals/yoy_growth.png)
+![YoY Debt Growth](International_Debt_Statistics/visuals/yoy_growth.png)
 
 Debt growth rates fluctuate significantly over time, reflecting economic cycles, policy changes, and global financial disruptions.
 
 ---
 
 ### Debt Rank Over Time
-![Debt Rank Over Time](visuals/debt_rank_over_time.png)
+![Debt Rank Over Time](International_Debt_Statistics/visuals/debt_rank_over_time.png)
 
 Debt rankings show long-term structural shifts rather than short-term volatility, revealing persistent leaders in global debt accumulation.
+
+---
+
+### Full Dashboard View
+![International Debt Statistics Dashboard](International_Debt_Statistics/visuals/International_Debt_Statistics_Dashboard.png)
 
 ---
 
@@ -175,6 +180,7 @@ International_Debt_Statistics/
 │   ├── top_10_countries_debt.png
 │   ├── debt_share_by_country.png
 │   ├── yoy_growth.png
-│   └── debt_rank_over_time.png
+│   ├── debt_rank_over_time.png
+│   └── International_Debt_Statistics_Dashboard.png
 │
 └── README.md
