@@ -61,35 +61,35 @@ All tables were validated for:
 ## Dashboard Visuals & Insights
 
 ### Global Total External Debt (USD, Trillions)
-![Global Total Debt](assets/images/global_total_debt.png)
+![Global Total Debt](visuals/global_total_debt.png)
 
 Global external debt has increased steadily over the last five decades, with sharper acceleration following major economic shocks and periods of global expansion.
 
 ---
 
 ### Top 10 Countries by External Debt
-![Top 10 Countries by Debt](assets/images/top_10_countries_debt.png)
+![Top 10 Countries by Debt](visuals/top_10_countries_debt.png)
 
 A small group of countries consistently dominates global external debt, highlighting concentration risk in international financial exposure.
 
 ---
 
 ### Share of Global Debt by Country
-![Debt Share by Country](assets/images/debt_share_by_country.png)
+![Debt Share by Country](visuals/debt_share_by_country.png)
 
 Global debt is unevenly distributed, with top contributors accounting for a disproportionately large share of total debt outstanding.
 
 ---
 
 ### Year-over-Year Debt Growth (%)
-![YoY Debt Growth](assets/images/yoy_debt_growth.png)
+![YoY Debt Growth](visuals/yoy_growth.png)
 
 Debt growth rates fluctuate significantly over time, reflecting economic cycles, policy changes, and global financial disruptions.
 
 ---
 
 ### Debt Rank Over Time
-![Debt Rank Over Time](assets/images/debt_rank_over_time.png)
+![Debt Rank Over Time](visuals/debt_rank_over_time.png)
 
 Debt rankings show long-term structural shifts rather than short-term volatility, revealing persistent leaders in global debt accumulation.
 
@@ -154,28 +154,27 @@ Syrian Arab Republic
 
 ---
 
-## Portfolio Context
-This project demonstrates strong data validation, comfort working with large economic datasets, and the ability to translate complex data structures into clear financial insights. The focus is intentionally on data integrity and interpretability rather than over-engineered visuals.
-
----
-
 ## Repository Structure
-international-debt-statistics/
+International_Debt_Statistics/
 │
-├── assets/
-│   └── images/
-│       ├── global_total_debt.png
-│       ├── top_10_countries_debt.png
-│       ├── debt_share_by_country.png
-│       ├── yoy_debt_growth.png
-│       └── debt_rank_over_time.png
+├── data_sql/
+│   └── sql_scripts/
+│       ├── 01_create_tables.sql
+│       ├── 02_load_raw_files.sql
+│       ├── 03_unpivot_to_long.sql
+│       ├── 04_aggregations_for_powerbi.sql
+│       ├── 05_fix_global_totals.sql
+│       ├── 06_fix_country_totals.sql
+│       └── 07_fix_totals_total_external_debt.sql
 │
-├── sql/
-│   ├── 01_load_raw_data.sql
-│   ├── 02_unpivot_transform.sql
-│   ├── 03_create_pb_tables.sql
-│
-├── powerbi/
+├── power_bi/
 │   └── International_Debt_Statistics.pbix
+│
+├── visuals/
+│   ├── global_total_debt.png
+│   ├── top_10_countries_debt.png
+│   ├── debt_share_by_country.png
+│   ├── yoy_growth.png
+│   └── debt_rank_over_time.png
 │
 └── README.md
