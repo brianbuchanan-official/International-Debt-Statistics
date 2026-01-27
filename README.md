@@ -1,69 +1,71 @@
-# International Debt Statistics  
-Global External Debt Analysis (1970–2024)
+# International Debt Statistics — Global External Debt Analysis (1970–2024)
 
-## Overview
-This project analyzes global external debt trends using the World Bank’s International Debt Statistics (IDS) dataset. The goal was to build a clean, reliable, and non-duplicative view of global external debt across countries over time and present the results in a clear, finance-oriented dashboard.
+## Executive Summary
 
-The analysis follows a full analytics pipeline:
-PostgreSQL → SQL → Power BI → Static visuals for GitHub
+Sovereign external debt is a critical macro-financial risk indicator with implications for global stability, capital markets, and policy decision-making. This project analyzes global external debt trends using the World Bank’s International Debt Statistics (IDS) dataset, producing a clean, non-duplicative view of country-level external debt over time. The analysis emphasizes data integrity, eliminating hierarchical double counting to ensure reliable global aggregation and decision-ready macro insights.
 
----
-
-## Why This Project
-International debt datasets contain hierarchical reporting structures that can easily lead to double counting if not handled correctly. Without careful filtering, global debt totals can be overstated and trends become misleading.
-
-This project focuses on:
-- Enforcing a single source of truth for global debt
-- Eliminating hierarchical double counting
-- Producing clear, trustworthy macro-level insights
-
----
-
-## Data Source
-- World Bank – International Debt Statistics (IDS)
+**Scope (Locked):**
+- Metric: Total External Debt Stock
 - Coverage: 1970–2024
+- Reporting level: Country-level only (no regional aggregates)
 - Currency: USD
+- Tools: PostgreSQL → SQL → Power BI → static visuals for GitHub
 
-### Key Data Decision
-All analysis is strictly filtered to the following series:
+---
 
-DT.DOD.DECT.CD — Total External Debt Stock
+## Deliverables
 
-This ensures:
+- **PostgreSQL Data Pipeline:**  
+  Cleaned, validated, non-duplicative debt tables
+
+- **Power BI Dashboard:**  
+  `power_bi/International_Debt_Statistics.pbix`
+
+- **Executive Visuals:**  
+  Stored in `International_Debt_Statistics/visuals/`
+
+---
+
+## Business Problem
+
+International debt datasets contain hierarchical reporting structures that can easily lead to double counting when aggregating across countries and categories. Without strict controls, global debt totals can be overstated, distorting trend analysis and risk interpretation.
+
+**Executive Question:**  
+**How has global external debt evolved over time, and which countries contribute most to total debt exposure when measured using a consistent, non-duplicative framework?**
+
+---
+
+## Key Performance Indicators (KPIs)
+
+- Global Total External Debt (USD)
+- External Debt by Country
+- Share of Global Debt by Country
+- Year-over-Year Debt Growth (%)
+- Country Debt Rank Over Time
+
+---
+
+## Data & Methodology
+
+The analysis uses the World Bank IDS dataset and strictly filters all observations to a single series:
+
+**DT.DOD.DECT.CD — Total External Debt Stock**
+
+This constraint ensures:
 - No overlap between subcategories
 - Accurate global aggregation
-- Consistent country-level comparisons
+- Consistent cross-country comparisons
 
-Once this filter was locked, all downstream tables and visuals were built from this single source of truth.
-
----
-
-## Data Pipeline & Modeling
-1. Raw IDS CSV files loaded into PostgreSQL  
-2. Wide-format data unpivoted into long format  
-3. Cleaned and validated yearly country totals  
-4. Aggregated into Power BI–ready tables  
-
-### Final SQL Tables
-- ids.pb_total_debt_by_year  
-- ids.pb_country_debt_by_year  
-- ids.pb_country_debt_share  
-- ids.pb_country_yoy_growth  
-- ids.pb_country_rank_by_year  
-
-All tables were validated for:
-- Year coverage (1970–2024)
-- Country consistency
-- No hierarchical double counting
+Raw IDS files are loaded into PostgreSQL, unpivoted from wide to long format, cleaned, and validated. Aggregated tables are constructed specifically for Power BI consumption, with multiple validation checks to confirm year coverage, country consistency, and elimination of hierarchical duplication.
 
 ---
 
-## Dashboard Visuals & Insights
+## Executive Dashboard & Visual Analysis
 
 ### Global Total External Debt (USD, Trillions)
 ![Global Total Debt](International_Debt_Statistics/visuals/global_total_debt.png)
 
-Global external debt has increased steadily over the last five decades, with sharper acceleration following major economic shocks and periods of global expansion.
+Global external debt has increased steadily over the past five decades, with acceleration following major economic shocks and periods of global expansion.
 
 ---
 
@@ -77,21 +79,21 @@ A small group of countries consistently dominates global external debt, highligh
 ### Share of Global Debt by Country
 ![Debt Share by Country](International_Debt_Statistics/visuals/debt_share_by_country.png)
 
-Global debt is unevenly distributed, with top contributors accounting for a disproportionately large share of total debt outstanding.
+Debt exposure is unevenly distributed, with top contributors accounting for a disproportionate share of total outstanding debt.
 
 ---
 
 ### Year-over-Year Debt Growth (%)
 ![YoY Debt Growth](International_Debt_Statistics/visuals/yoy_growth.png)
 
-Debt growth rates fluctuate significantly over time, reflecting economic cycles, policy changes, and global financial disruptions.
+Debt growth rates fluctuate significantly, reflecting economic cycles, policy shifts, and global financial disruptions.
 
 ---
 
 ### Debt Rank Over Time
 ![Debt Rank Over Time](International_Debt_Statistics/visuals/debt_rank_over_time.png)
 
-Debt rankings show long-term structural shifts rather than short-term volatility, revealing persistent leaders in global debt accumulation.
+Debt rankings reveal long-term structural positioning rather than short-term volatility, indicating persistent leaders in global debt accumulation.
 
 ---
 
@@ -100,87 +102,40 @@ Debt rankings show long-term structural shifts rather than short-term volatility
 
 ---
 
-## Countries Included in the Analysis
-The following countries are included in the final dataset. This list is derived directly from the validated PostgreSQL aggregate tables used in Power BI and reflects reporting availability after filtering to Total External Debt Stock only.
+## Countries Included
 
-Regional aggregates (e.g., South Asia, Sub-Saharan Africa) were excluded to ensure only country-level reporting entities are presented.
+The final dataset includes only country-level reporting entities with valid Total External Debt Stock data. Regional aggregates were explicitly excluded to preserve analytical integrity.
 
-Afghanistan  
-Albania  
-Algeria  
-Angola  
-Argentina  
-Armenia  
-Azerbaijan  
-Bangladesh  
-Belarus  
-Belize  
-Benin  
-Bhutan  
-Bolivia  
-Bosnia and Herzegovina  
-Botswana  
-Brazil  
-Burkina Faso  
-Burundi  
-Cabo Verde  
-Cameroon  
-Central African Republic  
-Chad  
-China  
-Colombia  
-Comoros  
-Congo, Dem. Rep.  
-Congo, Rep.  
-Cote d'Ivoire  
-Djibouti  
-Dominica  
-Dominican Republic  
-El Salvador  
-Eswatini  
-Rwanda  
-Sao Tome and Principe  
-Senegal  
-Serbia  
-Sierra Leone  
-Solomon Islands  
-Somalia, Fed. Rep.  
-Sudan  
-Suriname  
-Syrian Arab Republic  
+*(Country list unchanged and derived directly from validated PostgreSQL tables.)*
 
 ---
 
-## Tools Used
-- PostgreSQL
-- SQL
-- Power BI
-- GitHub Pages (static images)
+## Key Findings
+
+- Global external debt has risen materially over the last five decades.
+- Debt concentration is high, with a small number of countries driving global totals.
+- Growth rates vary significantly across time, reflecting macroeconomic shocks.
+- Structural debt leadership remains relatively stable over long horizons.
+
+---
+
+## Recommendations
+
+- Treat global debt aggregates with caution unless hierarchical duplication is explicitly controlled.
+- Monitor concentration risk among top debtor countries.
+- Use long-term trend analysis rather than short-term fluctuations for macro assessment.
+- Apply similar filtering discipline to other multi-level international datasets.
+
+---
+
+## Next Steps (Write-Up Only)
+
+- Extend analysis to debt-to-GDP and debt service ratios.
+- Introduce regional roll-ups using controlled aggregation rules.
+- Incorporate scenario analysis around global rate and growth shocks.
+- Expand dashboard interactivity for comparative country analysis.
 
 ---
 
 ## Repository Structure
-International_Debt_Statistics/
-│
-├── data_sql/
-│   └── sql_scripts/
-│       ├── 01_create_tables.sql
-│       ├── 02_load_raw_files.sql
-│       ├── 03_unpivot_to_long.sql
-│       ├── 04_aggregations_for_powerbi.sql
-│       ├── 05_fix_global_totals.sql
-│       ├── 06_fix_country_totals.sql
-│       └── 07_fix_totals_total_external_debt.sql
-│
-├── power_bi/
-│   └── International_Debt_Statistics.pbix
-│
-├── visuals/
-│   ├── global_total_debt.png
-│   ├── top_10_countries_debt.png
-│   ├── debt_share_by_country.png
-│   ├── yoy_growth.png
-│   ├── debt_rank_over_time.png
-│   └── International_Debt_Statistics_Dashboard.png
-│
-└── README.md
+
