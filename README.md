@@ -139,3 +139,29 @@ The final dataset includes only country-level reporting entities with valid Tota
 
 ## Repository Structure
 
+```text
+International_Debt_Statistics/
+│
+├── data_sql/
+│   └── sql_scripts/
+│       ├── 01_create_tables.sql
+│       ├── 02_load_raw_files.sql
+│       ├── 03_unpivot_to_long.sql
+│       ├── 04_aggregations_for_powerbi.sql
+│       ├── 05_fix_global_totals.sql
+│       ├── 06_fix_country_totals.sql
+│       └── 07_fix_totals_total_external_debt.sql
+│
+├── power_bi/
+│   └── International_Debt_Statistics.pbix
+│
+├── visuals/
+│   ├── global_total_debt.png
+│   ├── top_10_countries_debt.png
+│   ├── debt_share_by_country.png
+│   ├── yoy_growth.png
+│   ├── debt_rank_over_time.png
+│   └── International_Debt_Statistics_Dashboard.png
+│
+└── README.md
+```
